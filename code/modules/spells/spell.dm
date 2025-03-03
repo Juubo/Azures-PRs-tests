@@ -262,6 +262,14 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		to_chat(user, span_warning("[name] cannot be cast unless I am completely manifested in the material plane!"))
 		return FALSE
 
+	// Chains and rope restraints prevent casting
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.handcuffed || C.legcuffed)
+			C.visible_message(span_warning("[C] struggles against their restraints!"))
+			to_chat(C, span_warning("I can't cast spells while restrained!"))
+			return FALSE
+
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if((invocation_type == "whisper" || invocation_type == "shout") && !H.can_speak_vocal())
