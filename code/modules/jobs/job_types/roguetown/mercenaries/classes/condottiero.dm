@@ -6,6 +6,7 @@
 	traits_applied = list(TRAIT_OUTLANDER)
 	outfit = /datum/outfit/job/roguetown/mercenary/condottiero
 	category_tags = list(CTAG_MERCENARY)
+	cmode_music = 'sound/music/combat_condottiero.ogg'
 
 /datum/outfit/job/roguetown/mercenary/condottiero/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -43,4 +44,4 @@
 		H.change_stat("speed", 3)
 		H.change_stat("intelligence", 1)
 
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
