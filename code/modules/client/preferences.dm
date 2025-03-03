@@ -839,6 +839,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(!job.required && !isnull(job.max_pq) && (get_playerquality(user.ckey) > job.max_pq))
 				HTML += "<font color=#a59461>[used_name] (Max PQ: [job.max_pq])</font></td> <td> </td></tr>"
 				continue
+			if(job.undead_not_allowed)
+				if(virtue.is_undead || virtuetwo.is_undead)
+					HTML += "<font color=#a59461>[used_name] (Disallowed by Virtues)</font></td> <td> </td></tr>"
+					continue
 			var/job_unavailable = JOB_AVAILABLE
 			if(isnewplayer(parent?.mob))
 				var/mob/dead/new_player/new_player = parent.mob
@@ -1735,6 +1739,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						virtue = virtue_chosen
 						if (virtue.desc)
 							to_chat(user, span_purple(virtue.desc))
+						if(virtue.is_undead)
+							ResetJobs()
+							to_chat(user, "<font color='red'>Classes reset.</font>")
 
 				if("virtuetwo")
 					var/list/virtue_choices = list()
@@ -1754,6 +1761,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						virtuetwo = virtue_chosen
 						if (virtuetwo.desc)
 							to_chat(user, span_purple(virtuetwo.desc))
+						if(virtuetwo.is_undead)
+							ResetJobs()
+							to_chat(user, "<font color='red'>Classes reset.</font>")
 					/*	if (statpack.type != /datum/statpack/wildcard/virtuous)
 							statpack = new /datum/statpack/wildcard/virtuous
 							to_chat(user, span_purple("Your statpack has been set to virtuous (no stats) due to selecting a virtue.")) */

@@ -17,6 +17,8 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/list/added_stats = list()
 	/// The cost of the virtue to apply in TRIUMPH points, if any.
 	var/triumph_cost = 0
+	/// Whether this virtue is associated with the undead
+	var/is_undead = FALSE
 
 /datum/virtue/New()
 	. = ..()

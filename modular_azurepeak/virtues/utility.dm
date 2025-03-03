@@ -25,6 +25,7 @@
 /datum/virtue/utility/deadened
 	name = "Deadened"
 	desc = "Some terrible incident colours my past, and now, I feel nothing."
+	is_undead = TRUE
 	added_traits = list(TRAIT_NOMOOD)
 
 /datum/virtue/utility/light_steps
@@ -86,6 +87,7 @@
 /datum/virtue/utility/deathless
 	name = "Deathless"
 	desc = "Some fell magick has rendered me inwardly unliving - I do not hunger, and I do not breathe."
+	is_undead = TRUE
 	added_traits = list(TRAIT_NOHUNGER, TRAIT_NOBREATH)
 
 /*/datum/virtue/utility/deathless/apply_to_human(mob/living/carbon/human/recipient)
@@ -215,4 +217,5 @@
 /datum/virtue/heretic/seer
 	name = "(ASCENDANT) Seer"
 	desc = "You've spent your days studying the tales writ and told by the Ecclesiarchy's rejects and priests alike. You've grown to tell the followers by hunch and sight. They give themselves away so easily in this world slowly brewing to a fester."
+	is_undead = TRUE
 	added_traits = list(TRAIT_HERETIC_SEER)
